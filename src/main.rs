@@ -1,6 +1,5 @@
-use test_sqlite_perf::test_path;
+use test_sqlite_perf::test_path_ffi;
 
 fn main() {
-    let temp = std::env::temp_dir();
-    test_path(temp);
+    test_path_ffi()
 }

@@ -47,7 +47,7 @@ struct Logger {
 }
 
 impl log::Log for Logger {
-    fn enabled(&self, metadata: &log::Metadata) -> bool {
+    fn enabled(&self, _metadata: &log::Metadata) -> bool {
         true
     }
 
@@ -103,6 +103,11 @@ pub fn test_in_dir(batch_size: usize) {
     let elapsed = system_time.elapsed().unwrap();
 
     println!("Batch size {} Elapsed time: {:?}", batch_size, elapsed);
+}
+
+pub extern "C" fn test_path_ffi() {
+    let temp = std::env::temp_dir();
+    test_path(temp);
 }
 
 pub fn test_path(path: PathBuf) {
